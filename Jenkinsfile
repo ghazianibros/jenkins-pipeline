@@ -14,20 +14,20 @@ pipeline {
         //     }
         // }
 
-        stage('>>>>> Build Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 script{
                     sh 'docker build -t ghazianibros/2024-python-http-server .'
                 }
             }
         }
-        // stage('Containerize And Test') {
-        //     steps {
-        //         script{
-        //             sh 'docker run -d --name python-app ghazianibros/2024-python-http-server && sleep 10 && docker stop python-app'
-        //         }
-        //     }
-        // }
+        stage('Containerize And Test') {
+            steps {
+                script{
+                    sh 'docker run -d --name python-app ghazianibros/2024-python-http-server && sleep 10 && docker stop python-app'
+                }
+            }
+        }
         stage('Push Image To Dockerhub') {
             steps {
                 script{
