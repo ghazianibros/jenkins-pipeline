@@ -9,7 +9,7 @@ pipeline {
           scannerHome = tool 'SonarScanner'
         }
         withSonarQubeEnv('SonarQube Server') {
-          sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=python-app"
+          sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=jenkins-pipeline"
         }
       }
     }
