@@ -4,7 +4,10 @@ pipeline {
     stages{
         stage('SonarQube Analysis') {
             steps {
-                def scannerHome = tool 'SonarScanner';
+                script {
+                    // requires SonarQube Scanner 2.8+ 
+                    scannerHome = tool 'SonarScanner'
+                }
                 withSonarQubeEnv() {
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
@@ -13,8 +16,8 @@ pipeline {
         // stage('SonarQube Analysis') {
         //     steps {
         //         script {
-        //         // requires SonarQube Scanner 2.8+ 
-        //         scannerHome = tool 'SonarScanner'
+        //             // requires SonarQube Scanner 2.8+ 
+        //             scannerHome = tool 'SonarScanner'
         //         }
         //         withSonarQubeEnv('SonarQube Server') {
         //             sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=jenkins-pipeline"
