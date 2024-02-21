@@ -3,16 +3,22 @@ pipeline {
     
     stages{
         stage('SonarQube Analysis') {
-            steps {
-                script {
-                // requires SonarQube Scanner 2.8+ 
-                scannerHome = tool 'SonarScanner'
-                }
-                withSonarQubeEnv('SonarQube Server') {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=jenkins-pipeline"
-                }
+            def scannerHome = tool 'SonarScanner';
+            withSonarQubeEnv() {
+                sh "${scannerHome}/bin/sonar-scanner"
             }
         }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         script {
+        //         // requires SonarQube Scanner 2.8+ 
+        //         scannerHome = tool 'SonarScanner'
+        //         }
+        //         withSonarQubeEnv('SonarQube Server') {
+        //             sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=jenkins-pipeline"
+        //         }
+        //     }
+        // }
         stage('Build Docker Image') {
             steps {
                 script{
