@@ -12,7 +12,7 @@ pipeline {
         //         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=jenkins-pipeline"
         //         }
         //     }
-        // }
+        }
 
         stage('Build Docker Image') {
             steps {
