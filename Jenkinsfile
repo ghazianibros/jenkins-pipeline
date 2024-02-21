@@ -38,14 +38,14 @@ pipeline {
         //     }
         // }    
 }
-        post {
-            always {
-                // Always executed
-                    sh 'docker rm python-app'
-            }
-            success {
-                // on sucessful execution
-                sh 'docker logout'   
-            }
-        }
+        // post {
+        //     always {
+        //         // Always executed
+        //             sh 'docker rm python-app'
+        //     }
+        //     success {
+        //         // on sucessful execution
+        //         sh 'docker logout'   
+        //     }
+        // }
 }
