@@ -5,7 +5,7 @@ pipeline {
         stage('SonarQube Analysis') {
       steps {
         script {
-          // requires SonarQube Scanner 2.8+
+          // requires SonarQube Scanner 2.8+ 
           scannerHome = tool 'SonarScanner'
         }
         withSonarQubeEnv('SonarQube Server') {
