@@ -13,17 +13,6 @@ pipeline {
                 }
             }
         }
-        // stage('SonarQube Analysis') {
-        //     steps {
-        //         script {
-        //             // requires SonarQube Scanner 2.8+ 
-        //             scannerHome = tool 'SonarScanner'
-        //         }
-        //         withSonarQubeEnv('SonarQube Server') {
-        //             sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=jenkins-pipeline"
-        //         }
-        //     }
-        // }
         stage('Build Docker Image') {
             steps {
                 script{
@@ -48,14 +37,14 @@ pipeline {
             }
         }    
 }
-        // post {
-        //     always {
-        //         // Always executed
-        //             sh 'docker rm python-app'
-        //     }
-        //     success {
-        //         // on sucessful execution
-        //         sh 'docker logout'   
-        //     }
-        // }
+        post {
+            always {
+                // Always executed
+                    sh 'docker rm python-app'
+            }
+            success {
+                // on sucessful execution
+                sh 'docker logout'   
+            }
+        }
 }
